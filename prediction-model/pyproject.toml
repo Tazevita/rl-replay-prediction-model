@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "rocket-intent-prediction"
+version = "0.1.0"
+description = "GRU intent classifier for preprocessed Rocket League replays"
+requires-python = ">=3.10,<3.14"
+dependencies = ["numpy>=1.26", "torch>=2.4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[project.scripts]
+train-intent-model = "prediction_model.train:main"
+predict-intent = "prediction_model.predict:main"
+
+[tool.setuptools.packages.find]
+include = ["prediction_model*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
